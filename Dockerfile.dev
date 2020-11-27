@@ -1,0 +1,12 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# Copy is not necessary for development but 
+# this better mirrors the end state of a
+# production container setup
+COPY . .
+CMD [ "npm", "run" , "start" ]
